@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javacto.mapper.UserMapper">
+    <select id="queryAll" resultType="user">
+        SELECT * FROM t_user
+      </select>
+
+    <insert id="addUser" parameterType="user">
+        INSERT INTO t_user(uname,birthday,sex,address) VALUES(#{uname},#{birthday},#{sex},#{address})
+    </insert>
+
+    <delete id="deleteUser" parameterType="int">
+        delete FROM t_user where tid = #{id}
+    </delete>
+
+    <select id="findById" parameterType="int" resultType="user">
+        SELECT * FROM t_user where tid = #{id}
+      </select>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE t_user SET uname=#{uname},birthday=#{birthday},sex=#{sex},address=#{address} WHERE tid = #{tid}
+    </update>
+</mapper>
